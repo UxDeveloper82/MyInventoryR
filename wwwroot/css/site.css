@@ -1,0 +1,207 @@
+﻿﻿ /* Global css*/
+html, body {
+    margin: 0%;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+.bg-white {
+    background: #fff;
+}
+
+.bg-lightblue {
+    background: #85C1E9;
+}
+
+.bg-lightgray {
+    background: #E5E7E9;
+}
+
+.bg-gray {
+    background: #212121;
+}
+
+/* CSS Variables */
+
+:root {
+    --primary-color: #4458dc;
+    --primary-color2: #854fee;
+    --title-color: #141313;
+    --text-color: #777777;
+    --border-color: #201f1f17;
+    --gradient-color: linear-gradient(90deg, #4458dc 0%, #854fee 100%);
+    --shadow-color: 0px 10px 30px rgba(118, 85, 225, 0.3);
+    --box-shadow: 0px 10px 30px rgba(57, 56, 61, 0.205);
+    /* font family variables. */
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+/* Buttons */
+
+.button {
+    padding: .8rem 2.2rem;
+    font: normal 500 16px/20px var(--roboto);
+    position: relative;
+    border: 3px solid transparent;
+    border-radius: 4px;
+}
+
+    .button.primary-button {
+        background: var(--gradient-color);
+        background-clip: padding-box;
+        color: whitesmoke;
+        transition: background .6s ease;
+        box-shadow: var(--box-shadow);
+    }
+
+        .button.primary-button:hover {
+            background: whitesmoke;
+            background-clip: padding-box;
+            color: black;
+        }
+
+        .button.primary-button::after, .button.secondary-button::after {
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            bottom: -2px;
+            right: -2px;
+            background: var(--gradient-color);
+            content: ' ';
+            z-index: -1;
+            border-radius: 4px;
+        }
+
+    .button.secondary-button {
+        background: white;
+        background-clip: padding-box;
+        transition: background .6s ease;
+    }
+
+        .button.secondary-button:hover {
+            background: var(--gradient-color);
+            color: whitesmoke;
+            box-shadow: var(--box-shadow);
+        }
+
+p.para {
+    color: var(--text-color);
+    font: normal 500 16px/ 25px var(--roboto);
+}
+
+.font-roboto {
+    font-family: var(--roboto);
+}
+
+button:focus,
+button:active
+button:hover
+.btn:active,
+.btn.active {
+    outline: 0px !important;
+    box-shadow: none !important;
+}
+
+/*Navbar css*/
+.navbar_fixed {
+    position: fixed;
+    width: 100%;
+    top: -1px;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    box-shadow: var(--box-shadow);
+    z-index: 999;
+    transition: background 1s ease;
+}
+/*SIGN-IN*/
+
+.blogform-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+    .blogform-signin .checkbox {
+        font-weight: 400;
+    }
+
+    .blogform-signin .form-control {
+        position: relative;
+        box-sizing: border-box;
+        height: auto;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+        .blogform-signin .form-control:focus {
+            z-index: 2;
+        }
+
+    .blogform-signin input[type="email"] {
+        margin-bottom: -1px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    .blogform-signin input[type="password"] {
+        margin-bottom: 10px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+
+/*Admin Page Style*/
+
+
+#sidebar-wrapper {
+    min-height: 100vh;
+    margin-left: -15rem;
+    -webkit-transition: margin .25s ease-out;
+    -moz-transition: margin .25s ease-out;
+    -o-transition: margin .25s ease-out;
+    transition: margin .25s ease-out;
+}
+
+    #sidebar-wrapper .sidebar-heading {
+        padding: 0.875rem 1.25rem;
+        font-size: 1.2rem;
+    }
+
+    #sidebar-wrapper .list-group {
+        width: 15rem;
+    }
+
+#page-content-wrapper {
+    min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+}
+
+@media (min-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: 0;
+    }
+
+    #page-content-wrapper {
+        min-width: 0;
+        width: 100%;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: -15rem;
+    }
+}
+
+:root {
+    --primary-color: #333;
+    --secondary-color: #444;
+    --overlay-color: rgba(0, 0, 0, 0.7);
+}
