@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MyInventoryR.Data;
 using MyInventoryR.Extensions;
 using System;
 using System.Collections.Generic;
@@ -26,6 +28,19 @@ namespace MyInventoryR
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApplicationServices(_config);
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 6;
+            })
+            //.AddRoles<IdentityRole>()
+            .AddEntityFrameworkStores<DataContext>();
+            services.ConfigureApplicationCookie(options => {
+                options.LoginPath = "/Auth/Login";
+
+            });
             services.AddMvc(options =>
             {
                 options.CacheProfiles.Add("Monthly", new CacheProfile { Duration = 60 * 60 * 24 * 7 * 4 });

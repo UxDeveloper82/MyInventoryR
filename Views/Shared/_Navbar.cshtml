@@ -1,12 +1,41 @@
-﻿<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<nav class="navbar navbar-expand-md navbar-dark bg-primary">
     <div class="container">
         <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">PartSpot</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            
-            
-        </div>
+            <ul class="navbar-nav mr-auto"></ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Panel" asp-action="FrontPage">Admin Panel</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link">Hello @User.Identity.Name!</a>
+                            </li>
+                        }
+                        @if (SignInManager.IsSignedIn(User) != (User.IsInRole("Admin")))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link">Hello @User.Identity.Name!</a>
+                            </li>
+                        }
+                        <li class="nav-item"><a class="nav-link" asp-controller="Auth" asp-action="Logout">Logout</a></li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">@Html.ActionLink("Sign In", "Login", "Auth", new { area = "" }, new { @class = "nav-link" })</li>
+                    }
+                </ul>
+
+</div>
     </div>
 </nav>
