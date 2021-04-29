@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Repository\" />
+    <Folder Include="wwwroot\content\blog\" />
   </ItemGroup>
 
 </Project>

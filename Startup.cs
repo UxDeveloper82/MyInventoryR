@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyInventoryR.Data;
+using MyInventoryR.Data.FileManager;
+using MyInventoryR.Data.Repository;
 using MyInventoryR.Extensions;
 using System;
 using System.Collections.Generic;
@@ -41,6 +43,8 @@ namespace MyInventoryR
                 options.LoginPath = "/Auth/Login";
 
             });
+            services.AddTransient<ICustomerRepository, CustomerRepository>();
+            services.AddTransient<IFileManager, FileManager>();
             services.AddMvc(options =>
             {
                 options.CacheProfiles.Add("Monthly", new CacheProfile { Duration = 60 * 60 * 24 * 7 * 4 });
